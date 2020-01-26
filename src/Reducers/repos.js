@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 
 const initialState = {
     userName: '',
-    repos: [],
+    repos: false,
     loadingRepos: false
 };
 

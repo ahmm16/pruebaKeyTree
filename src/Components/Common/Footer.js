@@ -7,9 +7,12 @@ class Footer extends Component {
     render() {
         return (
             <React.Fragment>
-                <footer>
+                <footer style={{
+                    position: 'fixed', bottom: '2px', left: '50%',
+                    margin: '0 auto', transform: 'translate(-50%, -50%)'
+                }}>
                     <Typography variant="body2" color="primary" align="center">
-                        Made with <FavoriteIcon color="secondary"/> by Alex!
+                        Made with <FavoriteIcon color="secondary" /> by Alex!
                     {" " + new Date().getFullYear()}
                         {'.'}
                     </Typography>
