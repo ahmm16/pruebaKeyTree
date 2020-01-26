@@ -34,7 +34,6 @@ TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired,
-    userData: PropTypes.object,
 };
 
 function a11yProps(index) {
@@ -46,7 +45,7 @@ function a11yProps(index) {
 
 export default function SimpleTabs(props) {
     const [value, setValue] = React.useState(0);
-    const { userData, repos, loadingUser, loadingRepos } = props
+    const { userData, repos, loadingUser, loadingRepos, error_userData } = props
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -55,14 +54,23 @@ export default function SimpleTabs(props) {
     return (
         <Grid item xs={9} style={{ marginTop: '50px' }}>
             <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-                <Tab label="Datos del usuario" {...a11yProps(0)} disabled={!userData && true} />
+                <Tab label="Datos" {...a11yProps(0)} disabled={!userData && true} />
                 <Tab label="Repositorios" {...a11yProps(1)} disabled={!repos && true} />
-                <Tab label="Item Three" {...a11yProps(2)} />
+                <Tab label="Organizaciones" {...a11yProps(2)} />
             </Tabs>
             <TabPanel value={value} index={0} userData={userData}>
-                <Grid container xs={4} justify={"center"}>
+                <Grid container alignItems="center" justify={"center"}>
                     <Loader status={loadingUser} color={"primary"} />
-                    {userData && <UserCard data={userData} />}
+                    {userData ? <UserCard data={userData} />
+                        : error_userData ?
+                            <Typography noWrap component="h2" color={"secondary"}>
+                                No se ha encontrado el usuario introducido, pruebe otro!
+                            </Typography>
+                            :
+                            <Typography noWrap component="h2" color={"primary"}>
+                                Busca un usuario de GitHub para que se muestren sus datos, repositorios y organizaciones...
+                       </Typography>
+                    }
                 </Grid>
             </TabPanel>
             <TabPanel value={value} index={1} repos={repos}>
@@ -70,7 +78,7 @@ export default function SimpleTabs(props) {
                 {repos && <GridRepos data={repos} />}
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Item Three
+                Orgs
       </TabPanel>
         </Grid>
     );

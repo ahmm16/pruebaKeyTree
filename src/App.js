@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Route, Switch } from "react-router"
-import LoginPage from './Pages/LoginPage'
+import HomePage from './Pages/HomePage'
 import Container from '@material-ui/core/Container';
 import Header from './Components/Common/Header'
 import Footer from './Components/Common/Footer'
@@ -16,7 +16,8 @@ class App extends Component {
                         <Header />
                         <LeftBar />
                         <Switch>
-                            <Route exact path="/" component={LoginPage} />
+                            <Route exact path="/" component={HomePage} />
+                            <Route component={HomePage} />
                         </Switch>
                         <Footer />
                     </Grid>

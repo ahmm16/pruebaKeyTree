@@ -1,5 +1,6 @@
 import { getRepos } from '../Api/GithubApi';
 import actionTypes from '../ActionTypes/repos'
+import actionUser from './user'
 
 const actions = {
     searchUserRepos: () => {
@@ -7,7 +8,6 @@ const actions = {
             dispatch(actions.loadingRepos(true));
             const { userName } = store().repos;
             getRepos(userName).then(response => {
-                console.log("repos", response)
                 dispatch(actions.setUserRepos(response));
                 dispatch(actions.loadingRepos(false));
             }, reason => {
@@ -53,7 +53,7 @@ const actions = {
         }
     }),
 
-    cleanLoginParams: () => {
+    cleanParamsRepos: () => {
         return {
             type: actionTypes.CLEAN_PARAMS_REPOS
         };

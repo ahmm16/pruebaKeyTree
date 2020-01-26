@@ -1,38 +1,49 @@
 import { getUserData } from '../Api/GithubApi';
 import actionTypes from '../ActionTypes/user'
+import actionRepos from './repos'
 
 const actions = {
-
     setUserData: () => {
         return (dispatch, store) => {
             dispatch(actions.loadingUser(true));
             const { userName } = store().repos;
             getUserData(userName).then(response => {
-                console.log("USER", response)
                 dispatch(actions.addUserData(response));
                 dispatch(actions.loadingUser(false));
+                dispatch(actions.errorUserData(false));
             }, reason => {
-                dispatch(actions.loadingUser(false));
-                dispatch(actions.addUserData(null));
                 if (reason.message === 400) {
-                    //Login erroneo
+                    //User erroneo
                     console.log("No api 400")
+                    dispatch(actions.loadingUser(false));
+                    dispatch(actions.errorUserData(true));
                 } else {
                     //TODO: Falló otra cosa
                     console.log("No api 1")
+                    dispatch(actions.loadingUser(false));
+                    dispatch(actions.errorUserData(true));
 
                 }
             });
 
         }
-    },   
-    
+    },
+
     addUserData: (key, value) => {
         return {
             type: actionTypes.ADD_USER_DATA,
             payload: {
                 key,
                 value
+            }
+        };
+    },
+
+    errorUserData: (status) => {
+        return {
+            type: actionTypes.ERROR_USER_DATA,
+            payload: {
+                status
             }
         };
     },
