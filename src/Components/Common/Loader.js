@@ -3,10 +3,10 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 class Loader extends Component {
     render() {
-        const { status } = this.props
+        const { status, color } = this.props
         return (
             <React.Fragment>
-                <CircularProgress style={{display: status ? 'block' : 'none', margin:'auto' }} />
+                <CircularProgress color={color} style={{display: status ? 'block' : 'none', margin:'auto' }} />
             </React.Fragment>
         );
     }

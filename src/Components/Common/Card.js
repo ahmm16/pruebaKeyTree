@@ -10,16 +10,16 @@ class Card extends Component {
         return (
             <React.Fragment>
                 <CardContent>
-                    <Typography color="textSecondary">
+                    <Typography color="primary">
                         {id}
                     </Typography>
-                    <Typography color="textSecondary">
+                    <Typography color="primary">
                         {name}
                     </Typography>
                 </CardContent>
                 <CardActions>
                     <Button size="small">
-                        <a target="_blank" href={html_url}>Learn More</a></Button>
+                        <a target="_blank" href={html_url} rel="noopener noreferrer">Learn More</a></Button>
                 </CardActions>
             </React.Fragment>
         );

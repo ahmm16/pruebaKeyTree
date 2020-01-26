@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Route, Switch } from "react-router"
 import LoginPage from './Pages/LoginPage'
 import Container from '@material-ui/core/Container';
+import Footer from './Components/Common/Footer'
 
 class App extends Component {
     render() {
@@ -11,6 +12,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" component={LoginPage} />
                     </Switch>
+                    <Footer/>
                 </Container>
             </React.Fragment>
         )

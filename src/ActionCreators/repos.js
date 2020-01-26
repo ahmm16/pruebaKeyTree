@@ -1,4 +1,4 @@
-import { getRepos, getUserData } from '../Api/GithubApi';
+import { getRepos } from '../Api/GithubApi';
 import actionTypes from '../ActionTypes/repos'
 
 const actions = {
@@ -13,7 +13,7 @@ const actions = {
             }, reason => {
                 dispatch(actions.loadingRepos(false));
                 dispatch(actions.setUserRepos(null));
-                if (reason.message == 400) {
+                if (reason.message === 400) {
                     //Login erroneo
                     console.log("No api 400")
                 } else {
