@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Repo from '../Common/Repo'
+import Typography from '@material-ui/core/Typography';
 
 class GridRepos extends Component {
 
@@ -10,7 +11,7 @@ class GridRepos extends Component {
             <React.Fragment>
                 <Grid container spacing={4}>
                     {
-                        data ? data.map((repo) =>
+                        (data.length > 0 || !data) ? data.map((repo) =>
                             <Grid item xs={4} key={repo.id}>
                                 <Repo
                                     name={repo.name}
@@ -23,7 +24,8 @@ class GridRepos extends Component {
                             </Grid>
                         )
                             :
-                            <h2 style={{ color: 'red' }}>No hay repositorios disponibles</h2>
+                            <Typography noWrap component="h2" color={"secondary"}>No hay repositorios disponibles
+                            </Typography>
 
                     }
                 </Grid>

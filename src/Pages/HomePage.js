@@ -6,19 +6,19 @@ import userActions from '../ActionCreators/user';
 import Tabs from "../Components/Common/Tabs";
 
 class HomePage extends Component {
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.userName && prevProps.userName !== this.props.userName) {
-           // this.props.cleanParamsRepos()
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.userName !== '' && this.props.userName === '') {
+            this.props.cleanParamsRepos()
+            this.props.cleanUserParams()
         }
     }
 
     render() {
         const { repos, loadingRepos, userData,
-            loadingUser, error_userData } = this.props
+            loadingUser, error_userData, orgs } = this.props
         return (
             <React.Fragment>
-                <Tabs userData={userData} error_userData={error_userData} repos={repos} loadingRepos={loadingRepos} loadingUser={loadingUser} />
+                <Tabs userData={userData} error_userData={error_userData} repos={repos} loadingRepos={loadingRepos} loadingUser={loadingUser} orgs={orgs} />
             </React.Fragment>
         )
     }
@@ -31,6 +31,7 @@ const mapStateToProps = state => ({
     loadingRepos: state.repos.loadingRepos,
     //user
     userData: state.user.userData,
+    orgs: state.user.orgs,
     error_userData: state.user.error_userData,
     loadingUser: state.user.loadingUser,
 
@@ -38,8 +39,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = ({
     //reposA
-    cleanParamsRepos: reposActions.cleanParamsRepos
+    cleanParamsRepos: reposActions.cleanParamsRepos,
     //userA
+    cleanUserParams: userActions.cleanUserParams,
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomePage));

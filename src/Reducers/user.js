@@ -3,6 +3,7 @@ import update from 'immutability-helper';
 
 const initialState = {
     userData: false,
+    orgs: false,
     error_userData: false,
     loadingUser: false
 };
@@ -11,6 +12,8 @@ const repos = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_USER_DATA:
             return update(state, { userData: { $set: action.payload.key.user } });
+            case actionTypes.ADD_ORGS_DATA:
+                return update(state, { orgs: { $set: action.payload.key.orgs } });
         case actionTypes.ERROR_USER_DATA:
             return update(state, { error_userData: { $set: action.payload.status } });
         case actionTypes.LOADING_USER:
@@ -20,6 +23,7 @@ const repos = (state = initialState, action) => {
                 $set:
                 {
                     userData: false,
+                    orgs: false,
                     loadingUser: false
                 }
             });

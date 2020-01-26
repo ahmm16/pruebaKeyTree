@@ -37,7 +37,7 @@ class LeftBar extends Component {
                         error={error_userName}
                     />
                     <Loader status={loadingUser} />
-                    <Loader status={loadingRepos} color={"secondary"} />
+                    <Loader status={loadingRepos}/>
                     <Grid container spacing={1}>
                         <Grid item xs={12}>
                             <Button

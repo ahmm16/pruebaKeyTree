@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import UserCard from './UserCard';
 import GridRepos from './GridRepos';
+import GridOrgs from './GridOrgs';
 import Loader from './Loader';
 
 function TabPanel(props) {
@@ -45,7 +46,7 @@ function a11yProps(index) {
 
 export default function SimpleTabs(props) {
     const [value, setValue] = React.useState(0);
-    const { userData, repos, loadingUser, loadingRepos, error_userData } = props
+    const { userData, repos, loadingUser, loadingRepos, error_userData, orgs } = props
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -56,7 +57,7 @@ export default function SimpleTabs(props) {
             <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
                 <Tab label="Datos" {...a11yProps(0)} disabled={!userData && true} />
                 <Tab label="Repositorios" {...a11yProps(1)} disabled={!repos && true} />
-                <Tab label="Organizaciones" {...a11yProps(2)} />
+                <Tab label="Organizaciones" {...a11yProps(2)} disabled={!orgs && true} />
             </Tabs>
             <TabPanel value={value} index={0} userData={userData}>
                 <Grid container alignItems="center" justify={"center"}>
@@ -74,12 +75,15 @@ export default function SimpleTabs(props) {
                 </Grid>
             </TabPanel>
             <TabPanel value={value} index={1} repos={repos}>
-                <Loader status={loadingRepos} color={"secondary"} />
-                {repos && <GridRepos data={repos} />}
+                <Grid container alignItems="center" justify={"center"}>
+                    <Loader status={loadingRepos} color={"primary"} />
+                    {repos && <GridRepos data={repos} />}
+                </Grid>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Orgs
-      </TabPanel>
+                <Loader status={loadingUser} color={"primary"} />
+                {orgs && <GridOrgs data={orgs} />}
+            </TabPanel>
         </Grid>
     );
 }

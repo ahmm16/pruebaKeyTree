@@ -8,7 +8,9 @@ const actions = {
             dispatch(actions.loadingUser(true));
             const { userName } = store().repos;
             getUserData(userName).then(response => {
+                console.log("response" , response)
                 dispatch(actions.addUserData(response));
+                dispatch(actions.addOrgsData(response));
                 dispatch(actions.loadingUser(false));
                 dispatch(actions.errorUserData(false));
             }, reason => {
@@ -32,6 +34,16 @@ const actions = {
     addUserData: (key, value) => {
         return {
             type: actionTypes.ADD_USER_DATA,
+            payload: {
+                key,
+                value
+            }
+        };
+    },
+
+    addOrgsData: (key, value) => {
+        return {
+            type: actionTypes.ADD_ORGS_DATA,
             payload: {
                 key,
                 value
