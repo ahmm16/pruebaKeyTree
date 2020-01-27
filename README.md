@@ -1,5 +1,20 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Install npm packages
+For this project you need to install these packages:
+
+    npm i @material-ui/core
+    npm i @material-ui/icons
+    npm i axios
+    npm i connected-react-router
+    npm i history
+    npm i immutability-helper
+    npm i react-redux
+    npm i react-router
+    npm i react-router-dom
+    npm i redux
+    npm i redux-thunk
+
 ## Available Scripts
 
 In the project directory, you can run:
