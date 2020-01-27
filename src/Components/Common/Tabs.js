@@ -64,7 +64,7 @@ export default function SimpleTabs(props) {
                     <Loader status={loadingUser} color={"primary"} />
                     {userData ? <UserCard data={userData} />
                         : error_userData ?
-                            <Typography noWrap component="h2" color={"secondary"}>
+                            <Typography noWrap component="h2" id="incorrectUser" color={"secondary"}>
                                 No se ha encontrado el usuario introducido, pruebe otro!
                             </Typography>
                             :

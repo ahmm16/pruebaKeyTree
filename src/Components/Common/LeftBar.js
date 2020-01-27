@@ -46,6 +46,7 @@ class LeftBar extends Component {
                                 variant="contained"
                                 color="primary"
                                 className={""}
+                                id="searchData"
                                 onClick={setUserData}
                                 disabled={userName ? false : true}
                             >
@@ -59,6 +60,7 @@ class LeftBar extends Component {
                                 variant="contained"
                                 color="primary"
                                 className={""}
+                                id="searchRepos"
                                 onClick={searchUserRepos}
                                 disabled={userName ? false : true}
                             >
@@ -72,6 +74,7 @@ class LeftBar extends Component {
                                 variant="contained"
                                 color="secondary"
                                 className={""}
+                                id="cleanParamsRepos"
                                 onClick={cleanParamsRepos}
                             >
                                 Limpiar
