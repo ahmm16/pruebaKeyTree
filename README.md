@@ -28,11 +28,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### TEST - npm install cypress --save-dev
+### TEST - before install `npm install cypress --save-dev`
 
 Runs app tests in the development mode 
 
-npm run cypress:open
+`npm run cypress:open`
 
 ### `npm run build`
 
